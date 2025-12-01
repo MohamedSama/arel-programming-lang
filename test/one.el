@@ -203,7 +203,7 @@ if (true) {
 
 ${
 %something:
-    system::place(new Bomb($weight = 1e100, $(1, 2)));
+    system::place(new Bomb($weight = 1e1000, $(1, 2)));
     system::objects.front().detonate($timer = 37s);
     goto evacuate;
 %evacuate:
