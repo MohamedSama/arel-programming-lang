@@ -167,7 +167,7 @@ switch (TokenType) {
         doSomethingWithTbN_L("nothing");
         const int x = new Some::same::someother<int>();
     else:
-        type auto x = new Window($title="Main Window");
+        type auto x = new Window(@title="Main Window");
 };
 const that death = match (those) {
     1 > 120,
@@ -203,8 +203,8 @@ if (true) {
 
 ${
 %something:
-    system::place(new Bomb($weight = 1e1000, $(1, 2)));
-    system::objects.front().detonate($timer = 37s);
+    system::place(new Bomb(@weight = 1e1000, $(1, 2)));
+    system::objects.front().detonate(@timer = 37s);
     goto evacuate;
 %evacuate:
     Console::log("Evacuate..!!!");

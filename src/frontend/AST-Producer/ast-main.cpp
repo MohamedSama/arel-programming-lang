@@ -814,7 +814,7 @@ std::unique_ptr<Node> ASTProducer::expectBLOCK() {
 std::unique_ptr<Node> ASTProducer::expectParameters() {
     auto node = std::make_unique<Node>(NodeType::Parameters);
     while (!this->is(Tokenizer::TokenType::Punctuator, ")")) {
-        if (this->ExpectToken("$")) {
+        if (this->ExpectToken("@")) {
             node->children.push_back(std::make_unique<Node>(NodeType::Literal, this->expectToken(Tokenizer::TokenType::Identifier, "77588989797")));
             this->expectToken("=", "8489375749");
             node->children.push_back(this->parseExpression(0));
