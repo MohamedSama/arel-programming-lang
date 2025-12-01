@@ -14,15 +14,13 @@ int main(int argc, char** argv) {
         return true;
     };
 
-    bool interactive = true;
-    std::string input_path = "../test/one.el"; // default input file
-    int token_count = 0;
+    std::string input_path = "./test/one.el"; // default input file
+    int token_count = 1600; // default token count
 
     if (argc >= 2) {
         std::string a1 = argv[1];
         if (is_number(a1)) {
             token_count = std::stoi(a1);
-            interactive = false;
         } else {
             input_path = a1;
         }
@@ -31,15 +29,9 @@ int main(int argc, char** argv) {
         std::string a2 = argv[2];
         if (is_number(a2)) {
             token_count = std::stoi(a2);
-            interactive = false;
         } else {
             input_path = a2;
         }
-    }
-
-    if (!interactive && token_count == 0) {
-        // sensible default if user provided a file but no count
-        token_count = 1600;
     }
 
     auto run_once = [&](int used_token_count) {
@@ -91,20 +83,5 @@ int main(int argc, char** argv) {
         return 0;
     };
 
-    if (interactive) {
-        while (true) {
-            std::string inp;
-            if (!(std::cin >> inp)) break;
-            if (inp == "exit" || inp == "e") break;
-            if (!is_number(inp)) {
-                std::cerr << "Please enter a numeric token count or 'exit' to quit.\n";
-                continue;
-            }
-            int n = std::stoi(inp);
-            run_once(n);
-        }
-        return 0;
-    } else {
-        return run_once(token_count);
-    }
+    return run_once(token_count);
 }
